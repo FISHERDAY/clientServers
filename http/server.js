@@ -86,7 +86,7 @@ function patchReq(req, res) {
       body += data;
     });
     req.on('end', function () {
-      students[students.indexOf(students.find(student => student.id === id))].email = body;
+      students[students.indexOf(students.find(student => student.id === id))].email = JSON.parse(body).email;
     });
     res.end();
   } else res.end(`{"error": "${http.STATUS_CODES[404]}"}`);
